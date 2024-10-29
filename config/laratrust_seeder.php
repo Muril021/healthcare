@@ -13,11 +13,15 @@ return [
 
     'roles_structure' => [
         'admin' => [
-            'appointments' => 'c,r,u,d',
+            'specialties' => 'c,r,u,d',
+            'users' => 'c,r,u,d',
             'doctors' => 'c,r,u,d',
             'times' => 'c,r,u,d',
+            'available_times' => 'c,r,u,d',
+            'appointments' => 'c,r,u,d',
         ],
         'patient' => [
+            'users' => 'c,r,u,d',
             'appointments' => 'c,r,u,d',
         ],
     ],
