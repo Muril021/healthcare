@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-link {
+    color: #01A854;
+}
+
+.nav-link:hover {
+    color: #007A3D;
+    transition: all ease .3s;
+}
+
+.carousel-inner {
+    height: 750px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-overlay {
+    position: absolute;
+    background-color: rgba(0, 214, 107, 0.4);
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

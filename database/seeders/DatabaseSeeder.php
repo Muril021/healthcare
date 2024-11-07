@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             SpecialtySeeder::class,
             LaratrustSeeder::class,
             UserSeeder::class,
+            DoctorSeeder::class,
         ]);
     }
 }
