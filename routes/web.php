@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SpecialtyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -41,6 +42,51 @@ Route::middleware(['auth', 'role:admin'])
             [DoctorController::class, 'destroy']
         )->name('doctor.destroy');
     });
+
+Route::prefix('/especialidades')
+    ->group(function () {
+        Route::get(
+            '/lista',
+            [SpecialtyController::class, 'getSpecialties']
+        )->defaults('view', 'list')->name('specialty.list');
+
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::get(
+                '',
+                [SpecialtyController::class, 'getSpecialties']
+            )->name('specialty.index');
+
+            Route::get(
+                '/criar',
+                [SpecialtyController::class, 'create']
+            )->name('specialty.create');
+
+            Route::post(
+                '',
+                [SpecialtyController::class, 'store']
+            )->name('specialty.store');
+
+            Route::get(
+                '/{id}/editar',
+                [SpecialtyController::class, 'edit']
+            )->name('specialty.edit');
+
+            Route::put(
+                '/{id}',
+                [SpecialtyController::class, 'update']
+            )->name('specialty.update');
+
+            Route::delete(
+                '/{id}',
+                [SpecialtyController::class, 'destroy']
+            )->name('specialty.destroy');
+        });
+    });
+
+Route::get(
+    '/especialidades/{slug}',
+    [SpecialtyController::class, 'getSpecialtyBySlug']
+)->name('specialty.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

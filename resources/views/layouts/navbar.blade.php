@@ -25,6 +25,15 @@
                                 Médicos
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                aria-current="page"
+                                href="{{ route('specialty.index') }}"
+                            >
+                                Especialidades
+                            </a>
+                        </li>
                     @else
                         <li class="nav-item">
                             <a
@@ -33,6 +42,15 @@
                                 href="#"
                             >
                                 Minhas Consultas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                aria-current="page"
+                                href="{{ route('specialty.list') }}"
+                            >
+                                Especialidades
                             </a>
                         </li>
                     @endif
@@ -49,6 +67,15 @@
                     </form>
                 @endauth
                 @guest
+                    <li class="nav-item">
+                        <a
+                        class="nav-link"
+                        aria-current="page"
+                        href="{{ route('specialty.list') }}"
+                        >
+                            Especialidades
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a
                             class="nav-link"
