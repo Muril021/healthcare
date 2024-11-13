@@ -16,7 +16,7 @@ return [
             'specialties' => 'c,r,u,d',
             'users' => 'c,r,u,d',
             'doctors' => 'c,r,u,d',
-            'times' => 'r',
+            'schedules' => 'r',
             'available_times' => 'c,r,u,d',
             'appointments' => 'c,r,u,d',
         ],
