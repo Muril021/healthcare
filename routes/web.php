@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvailableTimeController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpecialtyController;
@@ -8,40 +9,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-
-Route::middleware(['auth', 'role:admin'])
-    ->prefix('/medicos')
-    ->group(function () {
-        Route::get(
-            '',
-            [DoctorController::class, 'index']
-        )->name('doctor.index');
-
-        Route::get(
-            '/criar',
-            [DoctorController::class, 'create']
-        )->name('doctor.create');
-
-        Route::post(
-            '',
-            [DoctorController::class, 'store']
-        )->name('doctor.store');
-
-        Route::get(
-            '/{id}/editar',
-            [DoctorController::class, 'edit']
-        )->name('doctor.edit');
-
-        Route::put(
-            '/{id}',
-            [DoctorController::class, 'update']
-        )->name('doctor.update');
-
-        Route::delete(
-            '/{id}',
-            [DoctorController::class, 'destroy']
-        )->name('doctor.destroy');
-    });
 
 Route::prefix('/especialidades')
     ->group(function () {
@@ -87,6 +54,69 @@ Route::get(
     '/especialidades/{slug}',
     [SpecialtyController::class, 'getSpecialtyBySlug']
 )->name('specialty.show');
+
+Route::middleware(['auth', 'role:admin'])
+    ->prefix('/medicos')
+    ->group(function () {
+        Route::get(
+            '',
+            [DoctorController::class, 'index']
+        )->name('doctor.index');
+
+        Route::get(
+            '/criar',
+            [DoctorController::class, 'create']
+        )->name('doctor.create');
+
+        Route::post(
+            '',
+            [DoctorController::class, 'store']
+        )->name('doctor.store');
+
+        Route::get(
+            '/{id}/editar',
+            [DoctorController::class, 'edit']
+        )->name('doctor.edit');
+
+        Route::put(
+            '/{id}',
+            [DoctorController::class, 'update']
+        )->name('doctor.update');
+
+        Route::delete(
+            '/{id}',
+            [DoctorController::class, 'destroy']
+        )->name('doctor.destroy');
+    });
+
+Route::get(
+    '/medicos/doctors-by-specialty/{specialtyId}',
+    [DoctorController::class, 'getListDoctorsBySpecialtyId']
+)->name('doctor.doctors-by-specialty');
+
+Route::middleware(['auth', 'role:admin'])
+    ->prefix('/horarios-disponiveis')
+    ->group(function () {
+        Route::get(
+            '',
+            [AvailableTimeController::class, 'index']
+        )->name('available_time.index');
+
+        Route::get(
+            '/criar',
+            [AvailableTimeController::class, 'create']
+        )->name('available_time.create');
+
+        Route::post(
+            '',
+            [AvailableTimeController::class, 'store']
+        )->name('available_time.store');
+
+        Route::delete(
+            '/{id}',
+            [AvailableTimeController::class, 'destroy']
+        )->name('available_time.destroy');
+    });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
