@@ -11,9 +11,21 @@ class DoctorRepository extends Repository
         parent::__construct($model);
     }
 
+    public function getListDoctors()
+    {
+        return $this->model->get();
+    }
+
     public function getPaginatedListDoctors()
     {
         return $this->model->paginate(10);
+    }
+
+    public function getListDoctorsBySpecialtyId(string $specialtyId)
+    {
+        return $this->model
+            ->where('specialty_id', $specialtyId)
+            ->get();
     }
 
     public function getDoctorById(string $id)

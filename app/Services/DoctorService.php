@@ -11,9 +11,19 @@ class DoctorService extends Service
         parent::__construct($repository);
     }
 
+    public function getListDoctors()
+    {
+        return $this->repository->getListDoctors();
+    }
+
     public function getPaginatedListDoctors()
     {
         return $this->repository->getPaginatedListDoctors();
+    }
+
+    public function getListDoctorsBySpecialtyId(string $specialtyId)
+    {
+        return $this->repository->getListDoctorsBySpecialtyId($specialtyId);
     }
 
     public function getDoctorById(string $id)

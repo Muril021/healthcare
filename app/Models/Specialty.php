@@ -23,6 +23,18 @@ class Specialty extends Model
         return $this->hasMany(Doctor::class);
     }
 
+    public function availableTimes()
+    {
+        return $this->belongsToMany(
+            Doctor::class,
+            'available_times',
+            'specialty_id',
+            'doctor_id',
+            'schedule_id',
+            'date'
+        );
+    }
+
     protected static function boot()
     {
         parent::boot();

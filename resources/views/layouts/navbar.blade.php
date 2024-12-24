@@ -34,6 +34,15 @@
                                 Especialidades
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                aria-current="page"
+                                href="{{ route('available_time.index') }}"
+                            >
+                                Horários disponíveis
+                            </a>
+                        </li>
                     @else
                         <li class="nav-item">
                             <a

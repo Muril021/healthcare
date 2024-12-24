@@ -66,9 +66,16 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function getListDoctorsBySpecialtyId(string $specialtyId)
     {
-        //
+        try {
+            $doctors = $this->doctorService
+                ->getListDoctorsBySpecialtyId($specialtyId);
+
+            return response()->json($doctors);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**

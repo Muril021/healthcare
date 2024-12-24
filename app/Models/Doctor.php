@@ -23,4 +23,16 @@ class Doctor extends Model
     {
         return $this->belongsTo(Specialty::class, 'specialty_id', 'id');
     }
+
+    public function availableTimes()
+    {
+        return $this->belongsToMany(
+            Schedule::class,
+            'available_times',
+            'specialty_id',
+            'doctor_id',
+            'schedule_id',
+            'date'
+        );
+    }
 }
